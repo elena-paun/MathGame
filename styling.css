@@ -1,0 +1,174 @@
+/* html {
+    background: radial-gradient(rgb(0, 0, 0), #ccc);
+    height: 100%;
+} */
+body {
+    background: url('./img/237627.jpg');
+
+}
+
+#container {
+    height: 600px;
+    width: 1000px;
+    background-color: rgba(243, 243, 243, 0.644);
+    margin: 100px auto;
+    padding: 20px;
+    /* border-radius: 10px; */
+    /* box-shadow: 9px 9px 0px 0px #333333; */
+    position: relative;
+}
+
+#score {
+    background-color: rgb(209, 235, 61);
+    color: rgb(4, 5, 0);
+    padding: 11px;
+    position: absolute;
+    left: 500px;
+    box-shadow: 0px 4px 0px #9da853;
+    font-family: prestige elite std;
+    font-size: 13px;
+    border-radius: 5px;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+#correct {
+    position: absolute;
+    left: 260px;
+    background-color: #42e252;
+    color: white;
+    padding: 11px;
+    display: none;
+}
+
+#wrong {
+    position: absolute;
+    left: 250px;
+    background-color: #de401a;
+    color: white;
+    padding: 11px;
+    display: none;
+}
+
+#question {
+    width: 450px;
+    height: 160px;
+    margin: 50px auto 10px auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 4px #535aa0;
+    font-size: 100px;
+    text-align: center;
+    font-family: hamurz free version;
+    color: rgba(0, 0, 0, 0.993);
+}
+
+#instruction {
+    width: 450px;
+    height: 50px;
+    background-color: rgba(77, 77, 77, 0.925);
+    margin: 10px auto;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0px 4px #333333;
+    font-family: prestige elite std;
+    color: white;
+}
+
+#choices {
+    width: 450px;
+    height: 100px;
+    margin: 10px auto;
+    font-family: prestige elite std;
+}
+
+.box {
+    width: 85px;
+    height: 85px;
+    background-color: white;
+    float: left;
+    margin-right: 36px;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+    color: gray;
+    text-align: center;
+    line-height: 80px;
+    position: relative;
+    transition: all 0.2s;
+
+}
+
+.box:hover,
+#startreset:hover {
+    background-color: rgb(59, 59, 59);
+    color: white;
+    box-shadow: 4px 4px #2b2b2b;
+}
+
+.box:active,
+#startreset:active {
+    box-shadow: 0px 0px #6b54d3;
+    top: 4px;
+}
+
+#box4 {
+    margin-right: 0;
+
+}
+
+#startreset {
+    top: 30px;
+    left: 130px;
+    margin-left: 500px;
+    padding: 20px;
+
+    background-color: rgb(255, 255, 255);
+
+    color: rgb(63, 63, 63);
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+    display: inline grid;
+    margin-left: 300px;
+    font-family: hamurz free version;
+    font-size: 20px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+#timeremaining {
+    width: 200px;
+    padding: 10px;
+    position: absolute;
+    top: 500px;
+    left: 250px;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 4px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+    margin-left: 155px;
+    /* visibility: hidden;*/
+    font-family: prestige elite std;
+    font-size: 13px;
+}
+
+#gameOver {
+    height: 350px;
+    margin-top: -40px;
+    width: 500px;
+    background: linear-gradient(#F3CA6B, #F3706C);
+    color: white;
+    font-size: 2.5em;
+    text-align: center;
+    text-transform: uppercase;
+    position: absolute;
+    line-height: 100px;
+    top: 110px;
+    left: 270px;
+    z-index: 2;
+    display: none;
+    font-family: prestige elite std;
+}
