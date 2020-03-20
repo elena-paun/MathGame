@@ -1,28 +1,59 @@
 const choices = document.querySelectorAll('.box');
-let correctAnswer;
 let timeleft;
+let correctAnswer;
+let action;
 let playing = false;
-//change button to reset
+let score;
 
+document.getElementById("startreset").innerText = "start Game";
+
+document.getElementById('startreset').addEventListener('click', e => {
+
+    if (playing == true) {
+        location.reload();
+
+    } else {
+        show('timeremaining');
+        playing = true;
+        //set score to 0
+        score = 0;
+        timeleft = 5;
+        document.getElementById("timeremainingvalue").innerHTML = timeleft;
+        document.getElementById('scorevalue').innerText = score;
+        hide("gameOver");
+        document.getElementById("startreset").innerHTML = "Reset Game";
+        timer()
+
+        correctAnswer = generateNumbers();
+    }
+
+
+})
 
 const generateNumbers = () => {
     let numberOne = Math.floor(Math.random() * 15).toString();
     let numberTwo = Math.floor(Math.random() * 15).toString();
     let result = numberOne * numberTwo;
-
+    let answers = [result];
     let randomBox = Math.abs(Math.ceil(Math.random() * choices.length - 1));
-
+    //let correctPosition = Math.floor(Math.random() * 3);
     choices[randomBox].innerText = result;
     for (let i = 0; i < choices.length; i++) {
         if (choices[i] !== choices[randomBox]) {
-            let wrongChoice = Math.floor(Math.random() * 15);
-            if (wrongChoice == result) {
+            let wrongChoice;
+            do {
                 wrongChoice = Math.floor(Math.random() * 15);
-            }
+            } while (answers.indexOf(wrongChoice) > -1)
+            answers.push(wrongChoice)
+            // if (array[i] == wrongChoice) {
+            //     let newwrongChoice = Math.floor(Math.random() * 15);
+            //     choices[i].innerText = newwrongChoice;
+            // }
             choices[i].innerText = wrongChoice;
         }
 
     }
+
 
     document.getElementById('question').innerText = numberOne + 'x' + numberTwo;
     return result;
@@ -35,14 +66,13 @@ const incrementScore = () => {
 }
 
 
+//change button to reset
+
 
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
-        if (playing == false) {
-            return;
-        }
 
-        if (correctAnswer == e.target.innerText) {
+        if ((correctAnswer) == e.target.innerText) {
 
             incrementScore();
 
@@ -66,60 +96,40 @@ choices.forEach(choice => {
 
 
 
-
-let x = document.getElementById("startreset");
-
-
-document.getElementById('startreset').addEventListener('click', e => {
-    timeleft = 6;
-
-    if (playing == true) {
-        document.getElementById("startreset").innerHTML = "start Game";
-        correctAnswer = generateNumbers();
-        hide('gameOver');
-
-        //location.reload();
-
-
-    } else if (playing == false) {
-        // document.location.reload();
-
-        document.getElementById("startreset").innerHTML = "Start Game";
-        correctAnswer = generateNumbers();
-        document.getElementById('scorevalue').innerText = 0;
-
-        hide('gameOver');
-    }
-    //timer();
-})
-
-
 //let x = document.getElementById("startreset");
-//const timer = () => {
-downloadTimer = setInterval(e => {
+const timer = () => {
 
-    if (timeleft <= 0) {
-        stopCountdown();
-        x.innerText = "Start Game";
-        //playing = false;
-        show('gameOver');
+    action = setInterval(e => {
 
-
-    } else {
-        hide('gameOver');
         timeleft--;
-        x.innerText = "Reset Game";
-        playing = true;
-    }
+        document.getElementById("timeremainingvalue").innerText = timeleft;
+        if (timeleft <= 0) {
+            stopCountdown();
+            document.getElementById("startreset").innerText = "start Game";
+            //playing = false;
+            show('gameOver');
+            correctAnswer = generateNumbers();
+        }
 
-    document.getElementById("timeremainingvalue").innerText = timeleft;
+        // } else if (timeleft > 0) {
+        //     stopCountdown();
+        //     x.innerText = "start Game";
+        //     //playing = false;
+        //     hide('gameOver');
+        // } else {
+        //     hide('gameOver');
+        //     timeleft--;
+        //     x.innerText = "start Game";
+        //     playing = true;
+        // }
 
+        // document.getElementById("timeremainingvalue").innerText = timeleft;
 
-}, 1000);
-//}
+    }, 1000);
+}
 
 const stopCountdown = () => {
-    clearInterval(downloadTimer);
+    clearInterval(action);
 }
 
 const hide = Id => {
