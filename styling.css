@@ -75,7 +75,7 @@ body {
     box-shadow: 0px 4px #535aa0;
     font-size: 100px;
     text-align: center;
-    font-family: hamurz free version;
+    font-family: hamurz free version, prestige elite std;
     color: rgba(218, 47, 4, 0.993);
 }
 
@@ -145,7 +145,7 @@ body {
     text-align: center;
     display: inline grid;
     margin-left: 300px;
-    font-family: hamurz free version;
+    font-family: hamurz free version, prestige elite std;
     font-size: 20px;
     position: relative;
     transition: all 0.2s;
@@ -184,6 +184,6 @@ body {
     left: 270px;
     z-index: 2;
     display: none;
-    font-family: hamurz free version;
+    font-family: hamurz free version, prestige elite std;
     text-transform: lowercase;
 }
